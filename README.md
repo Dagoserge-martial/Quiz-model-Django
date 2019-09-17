@@ -13,7 +13,6 @@ statut = models.BooleanField(default = True)
 ```
 titre =  models.CharField(max_length = 255 )
 auteur =  models.ForeignKey('User', on_delete = models.CASCADE, related_name = 'auteur')
-user_id =  models.ManyToManyField ('User', related_name = 'user' )
 description =  models.CharField(max_length = 255 )
 model_id =  models.ForeignKey('Model', on_delete = models.CASCADE, related_name = 'model_quiz')
 image = models.ImageField(upload_to='image/', blank=True)
@@ -25,7 +24,6 @@ statut = models.BooleanField(default = True)
 **Questions**
 ```
 question =  models.CharField(max_length = 255 )
-reponse_id =  models.ForeignKey('Reponse',on_delete = models.CASCADE, related_name = 'Rep_question')
 quiz_id =  models.ForeignKey('Quiz',on_delete = models.CASCADE, related_name = 'Quiz_question')
 date_add = models.DateTimeField(auto_now_add = True)
 date_upd = models.DateTimeField(auto_now = True)
@@ -35,6 +33,7 @@ statut = models.BooleanField(default = True)
 ```
 reponse =  models.CharField(max_length = 255 )
 point =  models.IntegerField(default=0)
+question_id =  models.ForeignKey('Question',on_delete = models.CASCADE, related_name = 'question_rep')
 statut = models.BooleanField(default = True)
 ```
 **Resultat**
